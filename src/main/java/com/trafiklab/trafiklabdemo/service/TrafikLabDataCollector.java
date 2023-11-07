@@ -17,11 +17,11 @@ public class TrafikLabDataCollector {
     private static final Logger log = LoggerFactory.getLogger(TrafikLabDataCollector.class);
 
     /**
-     * Filtrerar ut och sorterar de linjer med flest hållplatser.
+     * Filters and sorts the top ten  lines with most bus stops.
      *
      * @param busStops
      *
-     * @return en sorterad list  med linje, och dess antal hållplatser.
+     * @return a sorted list with bus-lines and number of bus stops.
      */
     public List<TopLine> getTopTenLinesList(BusStop[] busStops) {
         List<BusStop> list = Arrays.asList(busStops);
@@ -38,6 +38,13 @@ public class TrafikLabDataCollector {
         return sorted;
     }
 
+    /**
+     * Filters out the bus stops that a lineNumber has.
+     *
+     * @param busStops
+     * @param lineNumber
+     * @return a list of bus stops with a common lineNumber.
+     */
     public List<String> getAllBusStopsForLine(BusStop[] busStops, String lineNumber) {
         List<BusStop> list = Arrays.asList(busStops);
         return list.stream()
